@@ -1,0 +1,43 @@
+<a href="/events">Events Dashboard</a> <a href="/sessions/destroy" data-method="delete">Logout</a>
+<h1><%=@event.name%></h1>
+<% if flash[:messages] %>
+  <% flash[:messages].each do |note| %>
+    <p><%= note %></p>  
+  <% end %>
+<% end %>
+
+<p>Host: <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+<p>Date: <%= @event.date.strftime("%B %d, %Y") %> </p>
+<p>Location: <%= @event.location %>, <%=@event.state%></p>
+<p>People who are joining the event: <%= @event.users.count%></p>
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Location</th>
+        <th>State</th>
+    </thead>
+    <% @event.users.each do |event| %>
+        <tr>
+            <td><%= event.first_name %> <%= event.last_name %></td>
+            <td><%= event.location %></td>
+            <td><%= event.state %></td>
+        </tr>
+    <% end %>
+</table>
+
+<p>Discussion about this event:</p>
+<textarea rows="10" cols="120">
+    <% @comments.each do |comment| %>
+        
+  <%= comment.user.first_name %> says: <%= comment.content  %>
+  ------------------------------------
+    <% end %>
+</textarea>
+
+<form action = "/events/<%= @event.id %>/comments" method = "post">
+  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+  <p><label>Add Comment:</label></p>
+  <p><textarea rows="10" cols="120" name="content"></textarea></p>
+  <p><input type = "submit" value = "Submit Comments"></p>
+</form>

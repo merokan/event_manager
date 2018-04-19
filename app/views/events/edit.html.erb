@@ -1,0 +1,24 @@
+<a href="/events">Events Dashboard</a> <a href="/sessions/destroy" data-method="delete">Logout</a>
+<h1>Edit Your Event</h1>
+<% if flash[:messages] %>
+  <% flash[:messages].each do |note| %>
+    <p><%= note %></p>  
+  <% end %>
+<% end %>
+<form action = "/events/<%=@event.id%>/edit" method = "post">
+  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+  <input type="hidden" name="_method" value="patch">
+  <p><label>Name:</label>
+  <input type="text" name="name" id = "name" value = "<%= @event.name %>"></p>
+  <p><label>Date:</label>
+  <input type="date" name="date" id = "date" value = "<%= @event.date %>"></p>
+  <p><label>Location:</label>
+  <input type="text" name="location" id = "location" value = "<%= @event.location %>">
+  <select name="state">
+        <option><%= @event.state %></option>
+        <% @states.each do |state| %>
+            <option> <%= state %> </option>
+        <% end %>
+  </select></p>
+  <p><input type = "submit" value = "Update Event"></p>
+</form>

@@ -1,0 +1,39 @@
+<h1>Welcome</h1>
+<% if flash[:messages] %>
+  <% flash[:messages].each do |note| %>
+    <p><%= note %></p>  
+  <% end %>
+<% end %>
+<h2>Register</h2>
+<form action = "/users" method = "post">
+  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+  <p><label>First Name:</label>
+  <input type="text" name="first_name" id = "first_name"></p>
+  <p><label>Last Name:</label>
+  <input type="text" name="last_name" id = "last_name"></p>
+  <p><label>Email:</label>
+  <input type="text" name="email" id = "email"></p>
+  <p><label>Location:</label>
+  <input type="text" name="location" id = "location">
+  <select name="state" id="state">
+    <% @states.each do |state| %>
+        <option> <%= state %> </option>
+    <% end %>
+  </select></p>
+  <p><label>Password:</label>
+  <input type="password" name="password" id = "password"></p> 
+  <p> *Password should be at least 8 characters </p>
+  <p><label>Confirm PW:</label>
+  <input type="password" name="password_confirmation" id = "password_confirmation"> </p>
+  <p><input type = "submit" value = "Register"></p>
+</form>
+
+<h2>Login</h2>
+<form action = "/sessions" method = "post">
+  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+  <p><label>Email:</label>
+  <input type="text" name="email" id = "email"></p>
+  <p><label>Password:</label>
+  <input type="password" name="password" id = "password"></p>
+  <p><input type = "submit" value = "Login"></p>
+</form>
