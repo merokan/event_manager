@@ -1,28 +1,6 @@
-== README
+== Event Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web application where users register and login to add events they’re
+planning. Users can join events.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Technologies used: Ruby on Rails, HTML5 and CSS3.
