@@ -1,4 +1,7 @@
-== Event Manager
+== README for Event Manager project
+
+Ruby version - 2.3.1
+Rails version - 4.2.7
 
 Web application where users register and login to add events they’re
 planning. Users can join events.
